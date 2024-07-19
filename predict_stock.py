@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import sys
 import pandas as pd
 from prophet import Prophet
@@ -37,7 +36,7 @@ def predict_trends(file_path, months):
         forecast['yhat'] = forecast['yhat'].rolling(window=5, min_periods=1).mean()
 
         # Merge the forecast with original data
-        forecast = forecast[['ds' 'yhat']].rename(columns={'ds': 'Date', 'yhat': column})
+        forecast = forecast[['ds', 'yhat']].rename(columns={'ds': 'Date', 'yhat': column})
         forecast = forecast[forecast['Date'] > df['ds'].max()]
         if column == 'Volume':
             forecast[column] = forecast[column].round().astype(int)
@@ -62,3 +61,4 @@ if __name__ == "__main__":
         file_path = sys.argv[1]
         months = int(sys.argv[2])
         predict_trends(file_path, months)
+
