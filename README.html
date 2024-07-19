@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>README</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">README</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org90d3b14">Overview</a></li>
+<li><a href="#org40cd859">Installation</a>
+<ul>
+<li><a href="#org7c27f45">Install Dependencies</a></li>
+<li><a href="#org29712b7">Build the program from source</a></li>
+<li><a href="#org3ccfa1a">Build program through Qt Creator</a></li>
+</ul>
+</li>
+<li><a href="#org7fb34e8">Menubar</a>
+<ul>
+<li><a href="#orgf383e82">File</a></li>
+<li><a href="#org4adeebb">Edit</a></li>
+<li><a href="#org63f5c9a">View</a></li>
+<li><a href="#orgb19d956">Help</a></li>
+</ul>
+</li>
+<li><a href="#org49bdafc">Toolbar</a></li>
+<li><a href="#org8b2236e">Control Dock</a></li>
+<li><a href="#org1723610">Console</a></li>
+<li><a href="#orgedf7e34">Graph</a></li>
+<li><a href="#org83cbce7">Predictions</a></li>
+<li><a href="#org9c6af1a">Load</a></li>
+<li><a href="#org984f611">Save</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org90d3b14" class="outline-2">
+<h2 id="org90d3b14">Overview</h2>
+<div class="outline-text-2" id="text-org90d3b14">
+<p>
+The Stock Prediction Program is a tool that uses historical stock data to predict future trends, using the Facebook Prophet library to generate forecasts based on a user-provided CSV file containing stock prices. The program offers an arsenal of tools for the user to work with when analyzing stock data. This software has been tested to work on Ubuntu 22.04 LTS and Debian 12.
+</p>
+</div>
+</div>
+<div id="outline-container-org40cd859" class="outline-2">
+<h2 id="org40cd859">Installation</h2>
+<div class="outline-text-2" id="text-org40cd859">
+</div>
+<div id="outline-container-org7c27f45" class="outline-3">
+<h3 id="org7c27f45">Install Dependencies</h3>
+<div class="outline-text-3" id="text-org7c27f45">
+<p>
+The Stock Predictor Program requires Qt 6.6, as well as, the pandas and prophet python packages.
+</p>
+
+<p>
+Install the required python libraries using pip install:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">pip install pandas prophet
+</pre>
+</div>
+
+<p>
+Install Qt 6.6.X using the online installer <a href="https://www.qt.io/download-qt-installer-oss">here</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org29712b7" class="outline-3">
+<h3 id="org29712b7">Build the program from source</h3>
+<div class="outline-text-3" id="text-org29712b7">
+<p>
+Clone the Stock-Predictor-UI repository:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #005a5f;">git</span> clone https://github.com/ManuelAlbisu/Stock-Predictor-UI.git
+</pre>
+</div>
+
+<p>
+Navigate to the root directory of the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #005a5f;">cd</span> /path/to/Stock-Predictor-UI
+</pre>
+</div>
+
+<p>
+Build the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #005a5f;">mkdir</span> build &amp;&amp; <span style="color: #005a5f;">cd</span> build
+cmake ..
+<span style="color: #005a5f;">make</span>
+</pre>
+</div>
+
+<p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">./StockPredictor
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3ccfa1a" class="outline-3">
+<h3 id="org3ccfa1a">Build program through Qt Creator</h3>
+<div class="outline-text-3" id="text-org3ccfa1a">
+<p>
+Open Qt Creator and navigate to the <b>Welcome</b> tab. Select the <b>Open Project</b> button and navigate to the projects <code>CMakeLists.txt</code> file.
+</p>
+
+<p>
+Open the project and select <b>Build</b> from the menubar, then select <code>Build Project 'StockPredictor'</code>.
+</p>
+
+<p>
+Finally, select <b>Build</b> from the menubar once again and select <code>Run</code>.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7fb34e8" class="outline-2">
+<h2 id="org7fb34e8">Menubar</h2>
+<div class="outline-text-2" id="text-org7fb34e8">
+
+<div id="org65db24c" class="figure">
+<p><img src="images/menubar.jpg" alt="menubar.jpg" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgf383e82" class="outline-3">
+<h3 id="orgf383e82">File</h3>
+<div class="outline-text-3" id="text-orgf383e82">
+<p>
+The <b>File</b> tab on the menu bar grants the user access to the <b>Open</b>, <b>Save</b>, and <b>Exit</b> actions.
+</p>
+<ul class="org-ul">
+<li>Open: Load a CSV file containing stock data.</li>
+<li>Save: Save the current predictions to a specified file.</li>
+<li>Exit: Exit the application.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4adeebb" class="outline-3">
+<h3 id="org4adeebb">Edit</h3>
+<div class="outline-text-3" id="text-org4adeebb">
+<p>
+Allows the user to change the current theme of the graph.
+</p>
+
+<p>
+Available themes:
+</p>
+<ul class="org-ul">
+<li>Light: A light theme with bright colors, suitable for well-lit environments.</li>
+<li>Dark: A dark theme with muted colors, ideal for low-light conditions or reducing eye strain.</li>
+<li>Blue Cerulean: A theme with shades of blue, providing a calming visual effect.</li>
+<li>Brown Sand: A warm theme with earthy tones, giving a natural and rustic feel.</li>
+<li>Blue NCS: A theme with a different shade of blue, offering a cooler and more modern look.</li>
+<li>High Contrast: A theme with high contrast colors, making it easier to distinguish between different series and elements.</li>
+<li>Blue Icy: A theme with icy blue tones, providing a crisp and refreshing appearance.</li>
+<li>Qt: The default Qt theme, reflecting the native appearance of the Qt framework.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org63f5c9a" class="outline-3">
+<h3 id="org63f5c9a">View</h3>
+<div class="outline-text-3" id="text-org63f5c9a">
+<p>
+Toggle the visibility of certain UI elements.
+</p>
+
+<p>
+Available options:
+</p>
+<ul class="org-ul">
+<li>Toggle the visibility of different stock series
+<ul class="org-ul">
+<li>Open</li>
+<li>High</li>
+<li>Low</li>
+<li>Close</li>
+<li>Volume</li>
+</ul></li>
+
+<li>Toggle the visibility of the docks
+<ul class="org-ul">
+<li>Control panel dock</li>
+<li>Console dock</li>
+</ul></li>
+
+<li>Toggle the prediction line.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb19d956" class="outline-3">
+<h3 id="orgb19d956">Help</h3>
+<div class="outline-text-3" id="text-orgb19d956">
+<p>
+Opens this file!
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org49bdafc" class="outline-2">
+<h2 id="org49bdafc">Toolbar</h2>
+<div class="outline-text-2" id="text-org49bdafc">
+
+<div id="org923b989" class="figure">
+<p><img src="images/toolbar.jpg" alt="toolbar.jpg" />
+</p>
+</div>
+
+<p>
+Similar to the menu bar, the tool bar give the user quick access to the <b>Open</b>, <b>Save</b>, and <b>Exit</b> actions. It also gives the user an easy way of toggling the lines plotted on the graph.
+</p>
+</div>
+</div>
+<div id="outline-container-org8b2236e" class="outline-2">
+<h2 id="org8b2236e">Control Dock</h2>
+<div class="outline-text-2" id="text-org8b2236e">
+
+<div id="org51e204a" class="figure">
+<p><img src="images/control-dock.jpg" alt="control-dock.jpg" />
+</p>
+</div>
+
+<p>
+The control dock gives the user an easily accessible way of opening files, saving graphs with predictions, and exiting the program. A button for making predictions is also available for the user to interact with.
+</p>
+</div>
+</div>
+<div id="outline-container-org1723610" class="outline-2">
+<h2 id="org1723610">Console</h2>
+<div class="outline-text-2" id="text-org1723610">
+
+<div id="org9ca9cf8" class="figure">
+<p><img src="images/console.jpg" alt="console.jpg" />
+</p>
+</div>
+
+<p>
+The console provides several methods of interacting with the data through commands.
+</p>
+
+<p>
+Those commands include:
+</p>
+<ul class="org-ul">
+<li><code>list</code>: List all available commands.</li>
+<li><code>clear</code>: Clear the console.</li>
+<li><code>quit</code> | <code>exit</code> | <code>close</code>: Exit the program.</li>
+<li><code>current file</code>: Display the current file path.</li>
+<li><code>save &lt;file_path&gt;</code>: Save the current predictions to the specified file path.</li>
+<li><code>open &lt;file_path&gt;</code>: Open a CSV file from the specified path.</li>
+<li><code>make prediction &lt;months&gt;</code>: Make a prediction for the specified number of months (1-12).</li>
+<li><code>toggle &lt;series&gt;</code>: Toggle the visibility of the specified series (open, high, low, close, volume, line).</li>
+<li><code>seek &lt;date&gt;</code>: Seek and display the values for the specified date (format: yyyy-MM-dd).</li>
+<li><code>average &lt;start_date&gt; &lt;end_date&gt;</code>: Calculate the average values for the series in the specified date range (format: yyyy-MM-dd).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgedf7e34" class="outline-2">
+<h2 id="orgedf7e34">Graph</h2>
+<div class="outline-text-2" id="text-orgedf7e34">
+
+<div id="orge38fab3" class="figure">
+<p><img src="images/graph.jpg" alt="graph.jpg" />
+</p>
+</div>
+
+<p>
+The graph is the main visualization method the UI uses for presenting stock data to the user. The individual lines on the graph can be toggled on and off so that the user can view the trajectory of a certain category.
+</p>
+
+<p>
+Making a prediction will automatically draw a line on screen to separate the original data from the newly generated data.
+</p>
+</div>
+</div>
+<div id="outline-container-org83cbce7" class="outline-2">
+<h2 id="org83cbce7">Predictions</h2>
+<div class="outline-text-2" id="text-org83cbce7">
+
+<div id="orgdb5e4b3" class="figure">
+<p><img src="images/graph-prediction.jpg" alt="graph-prediction.jpg" />
+</p>
+</div>
+
+<p>
+The user can predict stock trends by typing in the number of months into the future they would like to predict then pressing the <b>Make Prediction</b> button on the control panel.
+</p>
+
+<p>
+The console also allows the user to make predictions simply by typing &ldquo;make prediction &lt;months&gt;&rdquo;. A new graph with the predicted data appended to it will then be drawn on screen separated by a dotted line.
+</p>
+</div>
+</div>
+<div id="outline-container-org9c6af1a" class="outline-2">
+<h2 id="org9c6af1a">Load</h2>
+<div class="outline-text-2" id="text-org9c6af1a">
+
+<div id="orgcad4299" class="figure">
+<p><img src="images/open-file-dialog.jpg" alt="open-file-dialog.jpg" />
+</p>
+</div>
+
+<p>
+Selecting the load button will cause a dialog box to appear prompting the user to select a CSV file to display on the graph.
+</p>
+
+<p>
+Files can also be opened by typing &ldquo;open &lt;file<sub>path</sub>&gt;&rdquo; in the console.
+</p>
+</div>
+</div>
+<div id="outline-container-org984f611" class="outline-2">
+<h2 id="org984f611">Save</h2>
+<div class="outline-text-2" id="text-org984f611">
+
+<div id="org14fb190" class="figure">
+<p><img src="images/save-file-dialog.jpg" alt="save-file-dialog.jpg" />
+</p>
+</div>
+
+
+<div id="org6d56f5f" class="figure">
+<p><img src="images/file-saved.jpg" alt="file-saved.jpg" />
+</p>
+</div>
+
+<p>
+Selecting the <b>Save</b> button will open a dialog box and prompts the user to select a directory to save the file in. The user can give the file and name and the file will be saved.
+</p>
+
+<p>
+Only files which have had predictions performed on them can be saved. Files can also be saved using the console by typing &ldquo;save &lt;file<sub>path</sub>&gt;&rdquo;.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

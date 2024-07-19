@@ -41,6 +41,7 @@ private slots:
     void toggle_dotted_line(bool checked);
     void make_prediction(int months);
     void draw_dotted_line(QDateTime date);
+    void open_readme();
 
 private:
     void create_actions(void);
@@ -79,6 +80,7 @@ private:
     QAction *close_series_action_;
     QAction *volume_series_action_;
     QAction *dotted_line_action_;
+    QAction *readme_action_;
 
     QAction *theme_light_action_;
     QAction *theme_dark_action_;

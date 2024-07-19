@@ -1,4 +1,5 @@
 #include "main_window.h"
+
 #include <QDockWidget>
 #include <QListWidget>
 #include <QLineEdit>
@@ -10,6 +11,7 @@
 #include <QMessageBox>
 #include <QProcess>
 #include <QToolButton>
+#include <QDesktopServices>
 
 // Constructor
 MainWindow::MainWindow(QWidget *parent)
@@ -92,6 +94,9 @@ void MainWindow::create_actions(void)
     dotted_line_action_->setIcon(load_icon("prediction_line.svg"));
     connect(dotted_line_action_, &QAction::toggled, this, &MainWindow::toggle_dotted_line);
 
+    readme_action_ = new QAction("README");
+    connect(readme_action_, &QAction::triggered, this, &MainWindow::open_readme);
+
     theme_light_action_ = new QAction("Light");
     theme_dark_action_ = new QAction("Dark");
     theme_blue_cerulean_action_ = new QAction("Blue Cerulean");
@@ -156,6 +161,7 @@ void MainWindow::create_menubar(void)
     view_menu_->addAction(dotted_line_action_);
 
     help_menu_ = menuBar()->addMenu("&Help");
+    help_menu_->addAction(readme_action_);
 }
 
 // Create toolbar
@@ -762,7 +768,7 @@ void MainWindow::console_average(const QString &start_date_str, const QString &e
 // Load icon from multiple paths
 QIcon MainWindow::load_icon(const QString &icon_name)
 {
-    QStringList paths = {"../../icons/", "./icons/"};
+    QStringList paths = {"../../icons/", "../icons", "./icons/"};
     for (const QString &path : paths) {
         QString full_path = path + icon_name;
         if (QFile::exists(full_path))
@@ -901,7 +907,7 @@ void MainWindow::make_prediction(int months)
     months_input_->clear();
 
     QString script_path;
-    QStringList possible_paths = {"../../predict_stock.py", "./predict_stock.py"};
+    QStringList possible_paths = {"../../predict_stock.py", "../predict_stock.py", "./predict_stock.py"};
     for (const QString &path : possible_paths) {
         if (QFile::exists(path)) {
             script_path = path;
@@ -976,6 +982,22 @@ void MainWindow::draw_dotted_line(QDateTime date)
     // Update the axis ranges to ensure the dotted line is visible
     x_axis_->setRange(x_axis_->min(), x_axis_->max());
     y_axis_->setRange(y_axis_->min(), y_axis_->max());
+}
+
+void MainWindow::open_readme() {
+    QStringList paths = {"../../README.html", "../README.html", "./README.html"};
+    for (const QString &path : paths) {
+        if (QFile::exists(path)) {
+            QUrl url = QUrl::fromLocalFile(QFileInfo(path).absoluteFilePath());
+            if (QDesktopServices::openUrl(url)) {
+                return;
+            } else {
+                QMessageBox::warning(this, "Error", "Failed to open URL. Operation not supported: " + url.toString());
+                return;
+            }
+        }
+    }
+    QMessageBox::warning(this, "Error", "README file not found.");
 }
 
 // Exit the application and remove temporary files
